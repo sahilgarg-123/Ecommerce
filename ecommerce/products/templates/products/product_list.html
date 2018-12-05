@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <ul>
+    {% for product in object_list %}
+
+        <li>{{ product.id }} <a href="/products/{{ product.id }}">{{ product.name }}</a> {{ product.manufacturer }} {{ product.price }}
+
+        {% if product.photo %}
+            <img src="{{ product.photo.url }}" height="50px" width="50px">
+        {% else %}
+            No image yet.
+        {% endif %}
+        </li>
+
+    {% empty %}
+        <li>No products yet.</li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

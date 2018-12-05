@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>{{ object.name }}</h1>
+    <p>Manufacturer: {{ object.manufacturer }}</p>
+    <p>Price: {{ object.price }}</p>
+    <p>Description: {{ object.description }}</p>
+    {% if product.photo %}
+        <p><img src="{{ product.photo.url }}" height="100px" width="100px"></p>
+    {% else %}
+        <p>No image yet.</p>
+    {% endif %}
+
+    <a href="/products/{{ object.id }}/update">Update product</a>
+    <a href="/products/{{ object.id }}/delete">Delete product</a>
+
+</body>
+</html>
