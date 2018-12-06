@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load bootstrap3 %}
 
+{% block content %}
+
+    <h3>Product Update</h3>
     <form action="{% url 'update-product' product.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-    <input type="submit" value="Update">
+        {% bootstrap_form form %}
+    <input type="submit" class="btn btn-info" value="Update">
     </form>
 
-</body>
-</html>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from products.models import Product
+from products.filters import ProductFilter
 
 # Create your views here.
 
@@ -8,6 +9,11 @@ from products.models import Product
 class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 
 class ProductDetailView(DetailView):
