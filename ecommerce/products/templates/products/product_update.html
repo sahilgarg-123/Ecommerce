@@ -4,14 +4,14 @@
 {% block content %}
 
     <h3>Product Update</h3>
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and request.user.myuser.is_seller == True %}
     <form action="{% url 'update-product' product.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
     <input type="submit" class="btn btn-info" value="Update">
     </form>
     {% else %}
-        Log in to update.
+        <p>Only sellers can update products.</p>
     {% endif %}
 
 {% endblock %}

@@ -3,14 +3,15 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
+    <h4>Product Add</h4>
+    {% if user.is_authenticated and request.user.myuser.is_seller == True %}
     <form action="{% url 'create-product' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
     <input type="submit" class="btn btn-success" value="Create">
     </form>
     {% else %}
-        Log in to add.
+        <p>Only sellers can add products.</p>
     {% endif %}
 
 {% endblock %}

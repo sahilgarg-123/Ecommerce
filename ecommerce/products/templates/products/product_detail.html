@@ -16,7 +16,7 @@
             <p>No image yet.</p>
         {% endif %}
 
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and request.user.myuser.is_seller == True %}
         <a href="/products/{{ object.id }}/update"><button class="btn btn-info">Update</button></a>
         <a href="/products/{{ object.id }}/delete"><button class="btn btn-danger">Delete</button></a>
         {% endif %}

@@ -25,7 +25,11 @@
 
             {% for product in filter.qs %}
             <tr>
+                {% if product.photo %}
                 <td style="text-align: center; vertical-align: middle;"><a href="/products/{{ product.id }}"><img src="{{ product.photo.url }}" height="50px" width="50px"></a></td>
+                {% else %}
+                <td style="text-align: center; vertical-align: middle;">No image yet.</td>
+                {% endif %}
                 <td style="text-align: center; vertical-align: middle;"><a href="/products/{{ product.id }}">{{ product.name }}</a></td>
                 <td style="text-align: center; vertical-align: middle;">{{ product.manufacturer }}</td>
                 <td style="text-align: center; vertical-align: middle;">{{ product.price }}</td>
