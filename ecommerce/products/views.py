@@ -10,7 +10,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
     context_object_name = 'product_list'
-    paginate_by = 3
+    paginate_by = 6
     queryset = Product.objects.all().order_by('name')
 
 
@@ -20,7 +20,7 @@ class ProductSearchView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset().order_by('name'))
         return context
 
 
