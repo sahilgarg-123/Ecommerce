@@ -18,7 +18,8 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from products.views import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView, ProductSearchView
+from products.views import ProductListView, ProductDetailView, ProductCreateView,\
+                            ProductUpdateView, ProductDeleteView, ProductSearchView
 from accounts.views import SignupView
 from ecommerce.views import HomePageView
 

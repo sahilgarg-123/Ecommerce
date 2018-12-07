@@ -11,7 +11,7 @@ class ProductListView(ListView):
     template_name = 'products/product_list.html'
     context_object_name = 'product_list'
     paginate_by = 3
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('name')
 
 
 class ProductSearchView(ListView):
