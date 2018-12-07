@@ -8,6 +8,7 @@ Checkout this repository, fork it, install dependencies, then start the server:
 > virtualenv .
 > source bin/activate
 > cd ecommerce
+> mkdir media
 > pip install -r requirements.txt
 > python manage.py runserver
 ```
