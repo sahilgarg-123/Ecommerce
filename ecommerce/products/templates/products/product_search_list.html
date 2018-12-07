@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <h3>Product Search</h3>
+    <form method="GET">
+        {% bootstrap_form filter.form %}
+        <input type="submit" class="btn btn-default" value="Search">
+    </form>
+
+
+    <h3>Product Search List</h3>
+    <ul class="list-unstyled">
+    {% for product in filter.qs %}
+
+        <li>
+        {% if product.photo %}
+            <a href="/products/{{ product.id }}"><img src="{{ product.photo.url }}" height="50px" width="50px"></a>
+        {% else %}
+            No image yet.
+        {% endif %}
+        <a href="/products/{{ product.id }}">{{ product.name }}</a> {{ product.manufacturer }} {{ product.price }}
+        </li>
+
+    {% empty %}
+        <li>No products yet.</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

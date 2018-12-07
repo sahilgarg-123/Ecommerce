@@ -6,9 +6,8 @@ from django.contrib.auth.models import User
 
 class MyUser(User):
 
-    is_customer = models.BooleanField(default=False)
-    is_seller = models.BooleanField(default=False)
+    is_customer = models.BooleanField('customer status', default=False)
+    is_seller = models.BooleanField('seller status', default=False)
 
     def __str__(self):
         return self.username
-

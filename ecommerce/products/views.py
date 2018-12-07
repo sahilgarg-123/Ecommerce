@@ -9,6 +9,14 @@ from products.filters import ProductFilter
 class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
+    context_object_name = 'product_list'
+    paginate_by = 3
+    queryset = Product.objects.all()
+
+
+class ProductSearchView(ListView):
+    model = Product
+    template_name = 'products/product_search_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

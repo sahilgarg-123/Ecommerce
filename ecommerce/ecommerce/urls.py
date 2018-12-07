@@ -18,16 +18,17 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from products.views import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
-from accounts.views import Signup
+from products.views import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView, ProductSearchView
+from accounts.views import SignupView
 from ecommerce.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home'),
-    path('signup/', Signup.as_view(), name='signup'),
+    path('signup/', SignupView.as_view(), name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
+    path('products/search/', ProductSearchView.as_view(), name='search-product'),
     path('products/add/', ProductCreateView.as_view(), name='create-product'),
     path('products/list/', ProductListView.as_view(), name='list-product'),
     path('products/<pk>/', ProductDetailView.as_view(), name='detail-product'),
