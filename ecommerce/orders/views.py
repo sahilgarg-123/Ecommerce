@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.urls import reverse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from accounts.models import MyUser
 from products.models import Product
 from orders.models import OrderItem, Order
@@ -37,8 +38,20 @@ def delete_from_cart(request, pk):
 
 
 def order_details(request):
+    if request.method == 'POST':
+        send_mail('Ecommerce order',
+                  'Your order was successful! Thank you for using Ecommerce services!',
+                  'no-reply@ecommerce.com',
+                  ['{}'.format(request.user.email)],
+                  fail_silently=False)
+        return redirect('/order-checkout/')
+
     existing_order = get_user_pending_order(request)
     context = {
         'order': existing_order
     }
     return render(request, 'orders/order_detail.html', context)
+
+
+def order_checkout(request):
+    return render(request, 'orders/order_checkout.html')

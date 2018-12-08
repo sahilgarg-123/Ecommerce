@@ -22,7 +22,7 @@ from products.views import ProductListView, ProductDetailView, ProductCreateView
                             ProductUpdateView, ProductDeleteView, ProductSearchView
 from accounts.views import SignupView
 from ecommerce.views import HomePageView
-from orders.views import add_to_cart, delete_from_cart, order_details
+from orders.views import add_to_cart, delete_from_cart, order_details, order_checkout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +30,7 @@ urlpatterns = [
     path('signup/', SignupView.as_view(), name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
+
     path('products/search/', ProductSearchView.as_view(), name='search-product'),
     path('products/add/', ProductCreateView.as_view(), name='create-product'),
     path('products/list/', ProductListView.as_view(), name='list-product'),
@@ -40,5 +41,6 @@ urlpatterns = [
     path('add-to-cart/<pk>/', add_to_cart, name='add-to-cart'),
     path('delete-from-cart/<pk>/', delete_from_cart, name='delete-from-cart'),
     path('order-details/', order_details, name='order-details'),
+    path('order-checkout/', order_checkout, name='order-checkout'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -46,7 +46,10 @@
         </td>
         <td colspan=2>
           {% if order.get_order_items %}
-            <a href="" class="pull-right btn btn-info">Proceed To Checkout</a>
+              <form method="POST">
+                {% csrf_token %}
+                <button class="pull-right btn btn-info">Checkout</button>
+              </form>
           {% endif %}
         </td>
       </tr>
