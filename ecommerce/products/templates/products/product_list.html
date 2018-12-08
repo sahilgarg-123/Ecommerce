@@ -5,9 +5,7 @@
 
     <h4>Looking for particular product?</h4>
     <a href="/products/search"><button class="btn btn-info">Go to Search</button></a><br>
-
     <h3>Product List</h3>
-
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -28,7 +26,11 @@
                 {% endif %}
                 <td style="text-align: center; vertical-align: middle;"><a href="/products/{{ product.id }}">{{ product.name }}</a></td>
                 <td style="text-align: center; vertical-align: middle;">{{ product.manufacturer }}</td>
-                <td style="text-align: center; vertical-align: middle;">{{ product.price }}</td>
+                <td style="text-align: center; vertical-align: middle;">{{ product.price }}
+                    <span class="pull-right">
+                        <a href="{% url 'add-to-cart' product.id %}" class="btn btn-warning">Add to Cart</a>
+                    </span>
+                </td>
             </tr>
             {% endfor %}
 

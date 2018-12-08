@@ -25,9 +25,10 @@
                     <li><a href="{% url 'list-product' %}" class="btn btn-simple">Product List</a></li>
                     <li><a href="{% url 'create-product' %}" class="btn btn-simple">Add Product</a></li>
                     <li><a href="{% url 'logout' %}" class="btn btn-simple">Log out</a></li>
-                {% elif user.is_authenticated %}
+                {% elif user.is_authenticated and request.user.myuser.is_customer == True %}
                     <li><a href="" class="btn btn-simple">Hi {{ user.username }}!</a></li>
                     <li><a href="{% url 'list-product' %}" class="btn btn-simple">Product List</a></li>
+                    <li><a href="{% url 'order-details' %}" class="btn btn-simple">Your Cart</a></li>
                     <li><a href="{% url 'logout' %}" class="btn btn-simple">Log out</a></li>
                 {% else %}
                     <li><a href="{% url 'list-product' %}" class="btn btn-simple">Product List</a></li>

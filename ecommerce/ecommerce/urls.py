@@ -22,6 +22,7 @@ from products.views import ProductListView, ProductDetailView, ProductCreateView
                             ProductUpdateView, ProductDeleteView, ProductSearchView
 from accounts.views import SignupView
 from ecommerce.views import HomePageView
+from orders.views import add_to_cart, delete_from_cart, order_details
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +36,9 @@ urlpatterns = [
     path('products/<pk>/', ProductDetailView.as_view(), name='detail-product'),
     path('products/<pk>/update/', ProductUpdateView.as_view(), name='update-product'),
     path('products/<pk>/delete/', ProductDeleteView.as_view(), name='delete-product'),
+
+    path('add-to-cart/<pk>/', add_to_cart, name='add-to-cart'),
+    path('delete-from-cart/<pk>/', delete_from_cart, name='delete-from-cart'),
+    path('order-details/', order_details, name='order-details'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
