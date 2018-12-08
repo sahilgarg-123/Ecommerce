@@ -27,9 +27,11 @@
                 <td style="text-align: center; vertical-align: middle;"><a href="/products/{{ product.id }}">{{ product.name }}</a></td>
                 <td style="text-align: center; vertical-align: middle;">{{ product.manufacturer }}</td>
                 <td style="text-align: center; vertical-align: middle;">{{ product.price }}
+                    {% if user.is_authenticated and request.user.myuser.is_customer == True %}
                     <span class="pull-right">
                         <a href="{% url 'add-to-cart' product.id %}" class="btn btn-warning">Add to Cart</a>
                     </span>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
