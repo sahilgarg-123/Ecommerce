@@ -26,7 +26,7 @@ def add_to_cart(request, **kwargs):
     user_order[0].items.add(order_item[0])
     user_order[0].save()
     messages.info(request, "Item added to cart")
-    return redirect('/order-details/')
+    return redirect('/order/details/')
 
 
 def delete_from_cart(request, pk):
@@ -44,7 +44,7 @@ def order_details(request):
                   'no-reply@ecommerce.com',
                   ['{}'.format(request.user.email)],
                   fail_silently=False)
-        return redirect('/order-checkout/')
+        return redirect('/order/checkout/')
 
     existing_order = get_user_pending_order(request)
     context = {

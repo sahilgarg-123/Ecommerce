@@ -40,7 +40,7 @@ urlpatterns = [
 
     path('add-to-cart/<pk>/', add_to_cart, name='add-to-cart'),
     path('delete-from-cart/<pk>/', delete_from_cart, name='delete-from-cart'),
-    path('order-details/', order_details, name='order-details'),
-    path('order-checkout/', order_checkout, name='order-checkout'),
+    path('order/details/', order_details, name='order-details'),
+    path('order/checkout/', order_checkout, name='order-checkout'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
