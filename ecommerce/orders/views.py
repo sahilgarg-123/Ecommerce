@@ -26,7 +26,7 @@ def add_to_cart(request, **kwargs):
     user_order[0].items.add(order_item[0])
     user_order[0].save()
     messages.info(request, "Item added to cart")
-    return redirect(reverse('list-product'))
+    return redirect('/order-details/')
 
 
 def delete_from_cart(request, pk):
