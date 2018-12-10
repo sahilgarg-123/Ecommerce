@@ -23,3 +23,6 @@ class MyUserAddress(models.Model):
     flat_num = models.PositiveIntegerField()
     zip_code = models.CharField(max_length=16)
     city = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.owner.username + ' address'

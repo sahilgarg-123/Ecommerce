@@ -19,7 +19,7 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.owner.username
+        return self.owner.username + ' order'
 
     def get_order_items(self):
         return self.items.all()
