@@ -11,3 +11,15 @@ class MyUser(User):
 
     def __str__(self):
         return self.username
+
+
+class MyUserAddress(models.Model):
+    owner = models.OneToOneField(MyUser, on_delete=models.CASCADE)
+    company_name = models.CharField(max_length=128)
+    first_name = models.CharField(max_length=128)
+    last_name = models.CharField(max_length=128)
+    street = models.CharField(max_length=128)
+    building_num = models.PositiveIntegerField()
+    flat_num = models.PositiveIntegerField()
+    zip_code = models.CharField(max_length=16)
+    city = models.CharField(max_length=128)
