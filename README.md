@@ -1,7 +1,7 @@
 # Ecommerce
 E-commerce application with basic functionality
 
-### Install
+## Install
 Checkout this repository, fork it, install dependencies, then start the server:
 ```
 > git clone https://github.com/adriantomczak/Ecommerce.git
